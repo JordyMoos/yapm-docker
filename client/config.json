@@ -1,0 +1,7 @@
+{
+  "apiEndPoint": "https://jordymoos.com/server",
+  "localStorageKey": "password-library",
+  "maxIdleTime": 30,
+  "randomPasswordSize": 30,
+  "masterKeyAllowEdit": true
+}

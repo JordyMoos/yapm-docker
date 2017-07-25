@@ -1,0 +1,11 @@
+version: "2.1"
+
+services:
+  client-compiler:
+    build: ./client/
+    volumes:
+      - elm:/opt/elm-yapm-client/dist
+
+volumes:
+  elm:
+
