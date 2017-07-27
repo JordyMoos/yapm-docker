@@ -1,5 +1,5 @@
 {
-  "apiEndPoint": "https://jordymoos.com/server",
+  "apiEndPoint": "https://zelda-unlimited.com/server/",
   "localStorageKey": "password-library",
   "maxIdleTime": 30,
   "randomPasswordSize": 30,
