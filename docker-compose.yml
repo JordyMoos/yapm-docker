@@ -1,11 +1,43 @@
 version: "2.1"
 
 services:
-  client-compiler:
-    build: ./client/
+  nginx:
+    image: nginx:1.12.1
+    labels:
+      - "traefik.enable=true"
+      - "traefik.backend=server"
+      - "traefik.frontend.rule=PathPrefix:/server;Host:zelda-unlimited.com"
+    links:
+      - server-fpm
+    depends_on:
+      - server-fpm
     volumes:
-      - elm:/opt/elm-yapm-client/dist
+      - server-code:/opt/yapm-server:ro
+      - ./server/nginx/conf.d:/etc/nginx/conf.d:ro
+
+  server-fpm:
+    build: ./server
+    volumes:
+      - server-code:/opt/server
+
+  client:
+    build: ./client
+    labels:
+      - "traefik.enable=true"
+      - "traefik.backend=client"
+      - "traefik.frontend.rule=Host:zelda-unlimited.com"
+
+  traefik:
+    image: traefik
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./traefik/traefik.toml:/etc/traefik/traefik.toml:ro
+      - ./traefik/acme:/etc/traefik/acme
+    ports:
+     - "80:80"
+     - "443:443"
+     - "8080:8080"
 
 volumes:
-  elm:
+  server-code:
 

@@ -11,12 +11,14 @@ RUN git clone https://github.com/JordyMoos/elm-yapm-client.git
 
 WORKDIR /opt/elm-yapm-client
 
-RUN npm install
+RUN npm install && npm install -g http-server
 
 ADD ./config.json /opt/elm-yapm-client/config.json
 
 RUN npm run prod \
   && rm dist/remove-me.js
 
-CMD ["echo", "Elm client build"]
+EXPOSE 80
+
+CMD ["http-server", "/opt/elm-yapm-client/dist", "-p 80"]
 
