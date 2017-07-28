@@ -1,4 +1,4 @@
-version: "2.1"
+version: "3"
 
 services:
   nginx:
@@ -6,7 +6,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.backend=server"
-      - "traefik.frontend.rule=PathPrefix:/server;Host:zelda-unlimited.com"
+      - "traefik.frontend.rule=PathPrefix:/server;Host:${DOMAIN}"
     links:
       - server-fpm
     depends_on:
@@ -19,13 +19,14 @@ services:
     build: ./server
     volumes:
       - server-code:/opt/server
+      - ./encrypted:/opt/server/encrypted:z
 
   client:
     build: ./client
     labels:
       - "traefik.enable=true"
       - "traefik.backend=client"
-      - "traefik.frontend.rule=Host:zelda-unlimited.com"
+      - "traefik.frontend.rule=Host:${DOMAIN}"
 
   traefik:
     image: traefik

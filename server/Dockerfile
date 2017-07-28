@@ -18,3 +18,7 @@ ADD ./config.yml /opt/server/config.yml
 
 RUN php /opt/composer install
 
+VOLUME /opt/server/encrypted
+
+RUN usermod -u 1000 www-data
+

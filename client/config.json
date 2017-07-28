@@ -1,7 +1,7 @@
 {
-  "apiEndPoint": "https://zelda-unlimited.com/server/",
+  "apiEndPoint": "https://example.com/server/",
   "localStorageKey": "password-library",
   "maxIdleTime": 30,
-  "randomPasswordSize": 30,
+  "randomPasswordSize": 32,
   "masterKeyAllowEdit": true
 }
