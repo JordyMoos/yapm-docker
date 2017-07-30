@@ -36,6 +36,9 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - ./traefik/traefik.toml:/etc/traefik/traefik.toml:ro
       - ./traefik/acme:/etc/traefik/acme
+    labels:
+      - "traefik.acme.domains=${DOMAIN}"
+      - "traefik.acme.email=${EMAIL}"
     ports:
      - "80:80"
      - "443:443"

@@ -19,7 +19,6 @@ address = ":8080"
 # Enable ACME (Let's Encrypt): automatic SSL
 [acme]
 # Email address used for registration
-email = "${EMAIL}"
 storageFile = "/etc/traefik/acme/acme.json"
 entryPoint = "https"
 onDemand = false
@@ -28,6 +27,5 @@ OnHostRule = true
 # Enable Docker configuration backend
 [docker]
 endpoint = "unix:///var/run/docker.sock"
-domain = "${DOMAIN}"
 watch = true
 exposedbydefault = false
