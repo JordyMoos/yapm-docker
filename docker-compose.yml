@@ -27,6 +27,8 @@ services:
       - "traefik.enable=true"
       - "traefik.backend=client"
       - "traefik.frontend.rule=Host:${DOMAIN}"
+    environment:
+      - API_END_POINT=https://${DOMAIN}/server/
 
   traefik:
     image: traefik

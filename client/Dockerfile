@@ -7,7 +7,7 @@ RUN apt-get update \
 
 WORKDIR /opt
 
-RUN git clone https://github.com/JordyMoos/elm-yapm-client.git
+RUN git clone -b config-via-environment --single-branch https://github.com/JordyMoos/elm-yapm-client.git
 
 WORKDIR /opt/elm-yapm-client
 
